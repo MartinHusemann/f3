@@ -55,13 +55,13 @@ int is_my_file(const char *filename)
 {
 	const char *p = filename;
 
-	if (!p || !isdigit(*p))
+	if (!p || !isdigit((unsigned char)*p))
 		return 0;
 
 	/* Skip digits. */
 	do {
 		p++;
-	} while (isdigit(*p));
+	} while (isdigit((unsigned char)*p));
 
 	return	(p[0] == '.') && (p[1] == 'h') && (p[2] == '2') &&
 		(p[3] == 'w') && (p[4] == '\0');
@@ -87,7 +87,7 @@ static long number_from_filename(const char *filename)
 	do {
 		num = num * 10 + (*p - '0');
 		p++;
-	} while (isdigit(*p));
+	} while (isdigit((unsigned char)*p));
 
 	return num - 1;
 }
